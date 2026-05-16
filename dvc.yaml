@@ -1,0 +1,15 @@
+stages:
+  data_cleaning:
+    cmd: uv run src/main.py -p clean
+    deps:
+    - data/Estudios_Economicos_Consolidado.xlsx
+    - src/data_cleaner.py
+    - src/main.py
+    outs:
+    - data/cleaned_dataset.py
+  data_transformation:
+    cmd: uv run src/main.py -p transform
+    deps:
+    - data/cleaned_dataset.py
+    - src/data_transformer.py
+    - src/main.py
