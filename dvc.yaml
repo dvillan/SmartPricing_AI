@@ -6,7 +6,7 @@ stages:
     - src/data_cleaner.py
     - src/main.py
     outs:
-    - data/cleaned_dataset.py
+    - data/cleaned_dataset.csv
   data_transformation:
     cmd: uv run src/main.py -p transform
     deps:
