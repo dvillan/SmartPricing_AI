@@ -3,16 +3,19 @@ Main script for project pipeline execution
 """
 
 import argparse
-import pandas as pd 
+import pandas as pd
+import utils 
 import os
 
 from dataset import Dataset
 from model import Model
 
 class Pipeline: 
-    def __init__(self, args):
-        self.args = args
-        self.dataset = Dataset("data/Estudios_Economicos_Consolidado.xlsx")
+    def __init__(self, phase, logger, config):
+        self.phase = phase
+        self.logger = logger
+        self.config = config
+        self.dataset = Dataset("data/Estudios_Economicos_Consolidado.xlsx", config)
 
     def data_cleaning(self): 
         print("Performing data cleaning phase...")
@@ -51,6 +54,15 @@ if __name__ == "__main__":
     parser.add_argument('-p', '--phase', type=str, help='Phase of the pipeline to be implemented',
                         default='all')
     args = parser.parse_args()
+    phase = args.phase
 
-    pipeline = Pipeline(args)
+    if os.path.exists("/logs"):
+        print("Creating log folder...")
+        os.mkdir("/logs")
+
+    config = utils.get_config()
+    logger = utils.create_logger(config)
+    logger.info("Initializing SmartPricing AI")
+
+    pipeline = Pipeline(phase, logger, config)
     pipeline.execute()

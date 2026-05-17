@@ -1,0 +1,43 @@
+filepaths:
+  clean_dataset: "data/"
+  raw_dataset: "data/"
+  model_path: "model/joblib"
+
+data_processing: 
+  relevant_variables:
+    - "total_empleados"
+    - "tipo_servicio"
+    - "region"
+    - "plaza"
+    - "estado"
+    - "total_mano_obra_anual"
+    - "materiales_anual"
+    - "equipo_maquinaria"
+    - "subcontratos_anual"
+    - "prestaciones_anual"
+    - "carga_social_anual"
+    - "facturacion_anual"
+  
+logger:
+  version: 1
+  disable_existing_loggers: false
+  formatters:
+    simple:
+      format: "%(asctime)s - %(levelname)s - %(message)s"
+  handlers:
+    stdout:
+      class: logging.StreamHandler
+      formatter: simple
+      stream: ext://sys.stdout
+    file:
+      class: logging.handlers.RotatingFileHandler
+      formatter: simple
+      filename: "../logs/log.log"
+      maxBytes: 1000000
+      backupCount: 3
+  loggers:
+    root:
+      level: INFO
+      handlers:
+        - stdout
+        - file
