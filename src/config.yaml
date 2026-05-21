@@ -3,21 +3,58 @@ filepaths:
   raw_dataset: "data/"
   model_path: "model/joblib"
 
-data_processing: 
+dataset_sheets: 
+  resumen: "Resumen_General"
+  detalle: "Detalle_Empleados"
+
+data_processing:
   relevant_variables:
-    - "total_empleados"
-    - "tipo_servicio"
-    - "region"
-    - "plaza"
-    - "estado"
-    - "total_mano_obra_anual"
-    - "materiales_anual"
-    - "equipo_maquinaria"
-    - "subcontratos_anual"
-    - "prestaciones_anual"
-    - "carga_social_anual"
-    - "facturacion_anual"
-  
+    num:
+      - "total_empleados"
+      - "total_mano_obra_anual"
+      - "materiales_anual"
+      - "equipo_maquinaria"
+      - "subcontratos_anual"
+      - "prestaciones_anual"
+      - "carga_social_anual"
+      - "facturacion_anual"
+    cat:
+      - "tipo_servicio"
+      - "region"
+      - "plaza"
+      - "estado"
+
+mapeo_estado:
+  MEXICO D.F.: CDMX
+  CIUDAD DE MEXICO: CDMX
+  CDMX: CDMX
+
+  ESTADO DE MEXICO: ESTADO DE MEXICO
+
+  SAN LUIS POTOSI: SAN LUIS POTOSI
+  SLP: SAN LUIS POTOSI
+
+  QUERETARO: QUERETARO
+  QRO: QUERETARO
+
+  NUEVO LEON: NUEVO LEON
+  GUANAJUATO: GUANAJUATO
+  PUEBLA: PUEBLA
+  YUCATAN: YUCATAN
+  JALISCO: JALISCO
+  MICHOACAN: MICHOACAN
+  BAJA CALIFORNIA: BAJA CALIFORNIA
+  AGUASCALIENTES: AGUASCALIENTES
+
+mapeo_categoria:
+  TECNICO DE LIMPIEZA: TECNICO DE LIMPIEZA
+  TECNICO LIMPIEZA A: TECNICO DE LIMPIEZA
+  TECNICO LIMPIEZA B: TECNICO DE LIMPIEZA
+  INTENDENTE INTENDENTE DE LIMPIEZA: INTENDENTE DE LIMPIEZA
+  OPERARIO DE LIMPIEZA DIURNO: OPERARIO DE LIMPIEZA DIURNO
+  OPERARIO DE LIMPIEZA NOCTURNO: OPERARIO DE LIMPIEZA NOCTURNO
+  OP. LIMPIEZA DIURNO PRIMARIA: OPERARIO DE LIMPIEZA DIURNO
+
 logger:
   version: 1
   disable_existing_loggers: false

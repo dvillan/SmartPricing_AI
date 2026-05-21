@@ -15,36 +15,31 @@ class Pipeline:
         self.phase = phase
         self.logger = logger
         self.config = config
-        self.dataset = Dataset("data/Estudios_Economicos_Consolidado.xlsx", config)
-
-    def data_cleaning(self): 
-        print("Performing data cleaning phase...")
-        self.dataset.clean_dataset()
-
-    def data_transformation(self):
-        print("Performing data transformations...")
-        self.dataset.transform_dataset()
-
-    def train(self):
-        print("Executing training phase...")
-
-    def evaluate(self):
-        print("Evaluating created models...")
+        self.dataset = Dataset("data/Estudios_Economicos_Consolidado.xlsx", config, logger)
 
     def execute(self):
-        print("Executing pipeline")
-        self.data_cleaning()
-        self.data_transformation()
-        self.train()
-        self.evaluate()
+
+        # Phases definition
+        if self.phase == "clean":
+            self.dataset.clean_dataset()
+        elif self.phase == "transform":
+            pass 
+        elif self.phase == "train": 
+            pass 
+        elif self.phase == "evaluate":
+            pass
+        else:
+            # Perform all phases from pipeline
+            self.logger.info("Executing pipeline...")
+            self.dataset.clean_dataset()
 
         self.teardown()
 
     def teardown(self):
-        if args.phase == 'all': 
-            print("Pipeline executed successfully")
+        if self.phase == 'all': 
+            self.logger.info("Pipeline executed successfully")
         else: 
-            print("Phase completed")
+            self.logger.info("Phase completed")
 
 
 if __name__ == "__main__":
@@ -52,7 +47,7 @@ if __name__ == "__main__":
     # CLI creation 
     parser = argparse.ArgumentParser()
     parser.add_argument('-p', '--phase', type=str, help='Phase of the pipeline to be implemented',
-                        default='all')
+                        default='all', choices=["all", "clean", "transform", "train", "evaluate"])
     args = parser.parse_args()
     phase = args.phase
 

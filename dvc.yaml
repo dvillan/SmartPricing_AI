@@ -6,10 +6,10 @@ stages:
     - src/data_cleaner.py
     - src/main.py
     outs:
-    - data/cleaned_dataset.csv
+    - data/dataset_cleaned.xlsx
   data_transformation:
     cmd: uv run src/main.py -p transform
     deps:
-    - data/cleaned_dataset.py
+    - data/dataset_cleaned.xlsx
     - src/data_transformer.py
     - src/main.py

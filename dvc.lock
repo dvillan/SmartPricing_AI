@@ -1,0 +1,37 @@
+schema: '2.0'
+stages:
+  data_cleaning:
+    cmd: uv run src/main.py -p clean
+    deps:
+    - path: data/Estudios_Economicos_Consolidado.xlsx
+      hash: md5
+      md5: de97124ad2316f31cadff669a30aac71
+      size: 93838
+    - path: src/data_cleaner.py
+      hash: md5
+      md5: ccc838d006aab9e6c3febd9be01a690c
+      size: 4437
+    - path: src/main.py
+      hash: md5
+      md5: 0bcfce1989d7158904932e9a12a63a06
+      size: 1765
+    outs:
+    - path: data/dataset_cleaned.xlsx
+      hash: md5
+      md5: b2db6351b8108cf92b79d34da7f0ace3
+      size: 92109
+  data_transformation:
+    cmd: uv run src/main.py -p transform
+    deps:
+    - path: data/dataset_cleaned.xlsx
+      hash: md5
+      md5: b2db6351b8108cf92b79d34da7f0ace3
+      size: 92109
+    - path: src/data_transformer.py
+      hash: md5
+      md5: 86a23abc3e3d8ea839f9b24289fc300b
+      size: 342
+    - path: src/main.py
+      hash: md5
+      md5: 0bcfce1989d7158904932e9a12a63a06
+      size: 1765
