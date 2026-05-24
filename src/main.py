@@ -23,7 +23,7 @@ class Pipeline:
         if self.phase == "clean":
             self.dataset.clean_dataset()
         elif self.phase == "transform":
-            pass 
+            self.dataset.transform_dataset()
         elif self.phase == "train": 
             pass 
         elif self.phase == "evaluate":
@@ -32,6 +32,7 @@ class Pipeline:
             # Perform all phases from pipeline
             self.logger.info("Executing pipeline...")
             self.dataset.clean_dataset()
+            self.dataset.transform_dataset()
 
         self.teardown()
 

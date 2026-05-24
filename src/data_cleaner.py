@@ -116,7 +116,7 @@ class DataCleaner:
         self.logger.info(f"{detalle_sheetname} size after data cleaning: {detalle_df_clean.shape}")
 
         # Save cleaned dataframe
-        cleaned_data_name = os.path.join(self.config['filepaths']['clean_dataset'], "dataset_cleaned.xlsx")
+        cleaned_data_name = self.config['filepaths']['clean_dataset']
         with pd.ExcelWriter(cleaned_data_name, engine='openpyxl') as writer:
             resumen_df_clean.to_excel(writer, sheet_name=resumen_sheetname, index=False)
             detalle_df_clean.to_excel(writer, sheet_name=detalle_sheetname, index=False)

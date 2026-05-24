@@ -9,29 +9,34 @@ stages:
       size: 93838
     - path: src/data_cleaner.py
       hash: md5
-      md5: ccc838d006aab9e6c3febd9be01a690c
-      size: 4437
+      md5: 6591f44f0a0665fe8b67a6c082d97b0c
+      size: 4399
     - path: src/main.py
       hash: md5
-      md5: 0bcfce1989d7158904932e9a12a63a06
-      size: 1765
+      md5: ef5ccaa57209ae725bfe8a5bb32fd04d
+      size: 1838
     outs:
     - path: data/dataset_cleaned.xlsx
       hash: md5
-      md5: b2db6351b8108cf92b79d34da7f0ace3
-      size: 92109
+      md5: 6fe6abdc441c818bc73a3695eac42797
+      size: 92106
   data_transformation:
     cmd: uv run src/main.py -p transform
     deps:
     - path: data/dataset_cleaned.xlsx
       hash: md5
-      md5: b2db6351b8108cf92b79d34da7f0ace3
-      size: 92109
+      md5: 6fe6abdc441c818bc73a3695eac42797
+      size: 92106
     - path: src/data_transformer.py
       hash: md5
-      md5: 86a23abc3e3d8ea839f9b24289fc300b
-      size: 342
+      md5: 72093087765932a0c0e980f5f925f75c
+      size: 14688
     - path: src/main.py
       hash: md5
-      md5: 0bcfce1989d7158904932e9a12a63a06
-      size: 1765
+      md5: ef5ccaa57209ae725bfe8a5bb32fd04d
+      size: 1838
+    outs:
+    - path: data/final_dataset.csv
+      hash: md5
+      md5: d754001a7037405d70999b528a6d2b0f
+      size: 98335

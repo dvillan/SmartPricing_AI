@@ -20,7 +20,17 @@ class Dataset:
         cleaner.clean_data(self.raw_data)
 
     def transform_dataset(self):
-        transformer = DataTransformer()
+        transformer = DataTransformer(self.config, self.logger)
+
+        # Load cleaned data 
+        clean_filepath = self.config["filepaths"]["clean_dataset"]
+        cleaned_data = pd.read_excel(clean_filepath, sheet_name=None)
+
+        # Perform transformations
+        transformer.apply_transformations(cleaned_data)
+
+    def split_data(self):
+        pass
     
     def save_dataset(self):
         pass

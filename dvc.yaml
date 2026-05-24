@@ -13,3 +13,5 @@ stages:
     - data/dataset_cleaned.xlsx
     - src/data_transformer.py
     - src/main.py
+    outs:
+    - data/final_dataset.csv

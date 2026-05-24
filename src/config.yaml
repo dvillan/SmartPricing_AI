@@ -1,5 +1,6 @@
 filepaths:
-  clean_dataset: "data/"
+  clean_dataset: "data/dataset_cleaned.xlsx"
+  final_dataset: "data/final_dataset.csv"
   raw_dataset: "data/"
   model_path: "model/joblib"
 
@@ -23,6 +24,26 @@ data_processing:
       - "region"
       - "plaza"
       - "estado"
+  cat_groupings:
+    - "cliente"
+    - "centro"
+    - "plaza"
+    - "region"
+    - "tipo_servicio"
+    - "estado"
+  skew_candidates:
+    - "facturacion_anual"
+    - "total_mano_obra_anual"
+    - "materiales_anual"
+    - "equipo_maquinaria"
+    - "subcontratos_anual"
+    - "prestaciones_anual"
+    - "carga_social_anual"
+    - "total_empleados"
+    - "mano_obra_por_empleado"
+    - "importe_anual_mediano"
+    - "empleados_max_categoria"
+  
 
 mapeo_estado:
   MEXICO D.F.: CDMX
